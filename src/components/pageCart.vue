@@ -1,32 +1,36 @@
 <template>
-   <div class="hello">
-      <h5>pageCart test text</h5>
+   <div class="page-cart">
+      <div class="page-cart__breadcrumbs">
+         <breadcrumbs-nav :pathTitle="['Корзина']"/>
+      </div>
+      <div class="page-cart__content">
+         <normal-cart/>
+      </div>
+      <slider-component/>
    </div>
- </template>
- 
- <script>
- export default {
+</template>
+
+<script>
+import breadcrumbsNav from '@/components/breadcrumbsNav.vue'
+import normalCart from '@/components/normalCart.vue'
+import sliderComponent from '@/components/sliderComponent.vue'
+
+export default {
    name: 'pageCart',
-   props: {
-     msg: String
-   }
- }
- </script>
- 
- <style scoped lang="scss">
- .hello {
-   font-size: 30px;
-   margin: 40px 0 0;
- }
- ul {
-   list-style-type: none;
-   padding: 0;
- }
- li {
-   display: inline-block;
-   margin: 0 10px;
- }
- a {
-   color: #42b983;
- }
- </style>
+   components: {
+      breadcrumbsNav,
+      normalCart,
+      sliderComponent
+   },
+   props: {}
+}
+</script>
+
+<style scoped lang="scss">
+.page-cart__breadcrumbs {
+   margin-bottom: rem(60);
+}
+.page-cart__content {
+   margin-bottom: rem(94);
+}
+</style>
