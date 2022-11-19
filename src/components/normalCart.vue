@@ -81,27 +81,38 @@ export default {
    justify-content: space-between;
    align-items: baseline;
    margin-bottom: rem(31);
+   
+   @include phones {
+      flex-wrap: wrap;
+   }
 }
 
 .normal-cart__title-block {
    display: flex;
    align-items: baseline;
+
+   @include phones {
+      margin: 0 10px 15px 0;
+   }
 }
 
 .normal-cart__title {
    font-weight: 700;
-   font-size: 44px;
+   font-size: rem(44);
    margin-right: rem(22);
+   
+   @include phones {
+      font-size: rem(32);
+   }
 }
 
 .normal-cart__amount {
-   font-size: 18px;
+   font-size: rem(18);
    color: $gray-color;
 }
 
 .normal-cart__clear {
    color: $gray-color;
-   // text-align: right;
    padding-bottom: 1px;
    border-bottom: 1px solid $gray-color;
    transition: 0.1s;
@@ -125,12 +136,11 @@ export default {
 }
 
 .normal-cart__total {
-   // min-width: rem(425);
    width: 33.2%;
 
    @include laptop {
       width: auto;
-      max-width: 580px;
+      max-width: 520px;
    }
 
 }

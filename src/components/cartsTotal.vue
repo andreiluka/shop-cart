@@ -110,8 +110,9 @@ export default {
 }
 
 .carts-total__result-text {
-  font-size: 18px;
+  font-size: rem(18);
   font-weight: 600;
+  margin-right: rem(10);
 }
 
 .carts-total__result-val {

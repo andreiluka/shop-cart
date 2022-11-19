@@ -1,12 +1,6 @@
 // media
 
 
-// @mixin desktopHd() {
-//    @media screen and (max-width: $bp-desktop-hd) {
-//       @content;
-//    }
-// }
-
 @mixin desktop() {
    @media screen and (max-width: $bp-desktop) {
       @content;
@@ -47,16 +41,3 @@
 
    @return $pixels / $context * 1rem;
 }
-
-// %clearfix {
-
-//    &:before,
-//    &:after {
-//       content: "";
-//       display: table;
-//    }
-
-//    &:after {
-//       clear: both;
-//    }
-// }

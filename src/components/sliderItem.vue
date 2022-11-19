@@ -71,8 +71,11 @@ export default {
 }
 
 .slider-item__pic {
-  // max-width: rem(245);
   margin-bottom: 5px;
+}
+
+.slider-item__img {
+  margin: 0 auto;
 }
 
 .slider-item__desc {
@@ -81,12 +84,12 @@ export default {
 
 .slider-item__name {
   font-weight: 700;
-  font-size: 22px;
+  font-size: rem(22);
   margin-bottom: 10px;
 }
 
 .slider-item__text {
-  font-size: 14px;
+  font-size: rem(14);
   line-height: 1.45;
 }
 
@@ -97,7 +100,7 @@ export default {
 .slider-item__cost {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-weight: 500;
-  font-size: 22px;
+  font-size: rem(22);
   letter-spacing: 0.005em;
   margin-bottom: 5px;
 }

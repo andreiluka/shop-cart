@@ -9,19 +9,22 @@
             <div class="carts-item__text">{{editProduct.desc}}</div>
             <div class="carts-item__code">Артикул: {{editProduct.code}}</div>
          </div>
-         <div class="carts-item__counter">
-            <div class="carts-item__btns">
-               <div @click="changeAmountGoods(false)" class="carts-item__btn">
-                  <div class="carts-item__btn-icon"></div>
+         <div class="carts-item__count">
+            <div class="carts-item__counter">
+               <div class="carts-item__btns">
+                  <div @click="changeAmountGoods(false)" class="carts-item__btn">
+                     <div class="carts-item__btn-icon"></div>
+                  </div>
+                  <div class="carts-item__btn carts-item__amount">{{editProduct.amount}}</div>
+                  <div @click="changeAmountGoods(true)" class="carts-item__btn">
+                     <div class="carts-item__btn-icon carts-item__btn-icon--plus"></div>
+                  </div>
                </div>
-               <div class="carts-item__btn carts-item__amount">{{editProduct.amount}}</div>
-               <div @click="changeAmountGoods(true)" class="carts-item__btn">
-                  <div class="carts-item__btn-icon carts-item__btn-icon--plus"></div>
-               </div>
+               <div class="carts-item__price" :class="{'carts-item__price--hiden': editProduct.amount < 2}">{{editProduct.price.toLocaleString()}}&nbsp;&#8381;/шт.</div>
             </div>
-            <div class="carts-item__price" :class="{'carts-item__price--hiden': editProduct.amount < 2}">{{editProduct.price.toLocaleString()}}&nbsp;&#8381;/шт.</div>
+            <div class="carts-item__cost">{{itemCost}}&nbsp;&#8381;</div>
+
          </div>
-         <div class="carts-item__cost">{{itemCost}}&nbsp;&#8381;</div>
          <div @click="removeExistedGoods" class="carts-item__remove"></div>
       </div>
    </div>
@@ -63,20 +66,42 @@ export default {
 .carts-item__wrap {
    display: flex;
    align-items: center;
-   padding: 29px 53px 25px 15px;
+   padding: 3.6% 6.6% 3.1% 1.9%;
    position: relative;
+   
+   @include tablets {
+      padding-right: 5%;
+   }
+
+   @include phones {
+      flex-direction: column;
+   }
 }
 
 .carts-item__pic {
    width: rem(100);
    height: rem(100);
-   // margin-right: 31px;
    margin-right: 2.5%;
+   
+   @include phones {
+      width: 120px;
+      height: 120px;
+      margin: 0 0 15px 0;
+   }
+}
+
+.carts-item__img {
+   margin: 0 auto;
 }
 
 .carts-item__desc {
    flex: 1;
-   margin-right: 2%;
+   margin-right: 4%;
+
+   @include phones {
+      text-align: center;
+      margin: 0 0 15px 0;
+   }
 }
 
 .carts-item__name {
@@ -94,22 +119,29 @@ export default {
    color: $gray-color;
 }
 
+.carts-item__count {
+   display: flex;
+   align-items: center;
+}
+
 .carts-item__counter {
-   // margin-right: rem(84);
-   margin-right: 6.9%;
+   margin-right: 5.9vw;
+   
+   @include tablets {
+      margin-right: 4vw;
+   }
 }
 
 .carts-item__btns {
    display: flex;
-   margin-bottom: 8px;
 }
 
 .carts-item__btn {
    display: flex;
    align-items: center;
    justify-content: center;
-   width: 34px;
-   height: 34px;
+   width: rem(34);
+   height: rem(34);
    border-radius: 4px;
    margin-right: 2px;
    background-color: $light-gray-color;
@@ -118,7 +150,6 @@ export default {
 
    &:hover {
       background-color: #e0e0e0;
-      // opacity: 0.6;
    }
 }
 
@@ -156,16 +187,17 @@ export default {
    font-weight: 500;
    font-size: 12px;
    text-align: center;
+   margin-top: 8px;
 
    &--hiden {
-      opacity: 0;
+      display: none;
    }
 }
 
 .carts-item__cost {
    font-family: 'Roboto', Helvetica, Arial, sans-serif;
    font-weight: 500;
-   font-size: 18px;
+   font-size: rem(18);
 }
 
 .carts-item__remove {

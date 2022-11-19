@@ -80,12 +80,18 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: rem(60);
 }
 
 .slider-component__title {
   font-weight: 600;
-  font-size: 30px;
+  font-size: rem(30);
+  
+  @include phones {
+    font-size: rem(28);
+    margin: 0 rem(15) rem(15) 0;
+  }
 }
 
 .slider-component__btns {
@@ -100,6 +106,11 @@ export default {
   border-radius: 50%;
   transition: 0.3s;
   position: relative;
+
+  @include phones {
+    width: rem(40);
+    height: rem(40);
+  }
   
   &:hover {
     background: $gray-color;
@@ -119,6 +130,11 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @include phones {
+      width: rem(12);
+      height: rem(16);
+    }
   }
 }
 
@@ -126,12 +142,12 @@ export default {
   display: flex;
   align-items: baseline;
   padding: 0 rem(18);
-  font-size: 18px;
+  font-size: rem(18);
 }
 
 .slider-component__counter-curent {
   font-weight: 500;
-  font-size: 24px;
+  font-size: rem(24);
 }
 
 .slider-component__counter-separator {
@@ -144,19 +160,14 @@ export default {
 }
 
 .slider-component {
-  max-width: 10000px;
   width: 100%;
 }
 
 .slider-component__block {
-  position: relative;
-
   overflow: hidden;
 }
 
 .slider-component__list {
-  // display: flex;
-
   display: grid;
   grid-auto-columns: 25.3%;
   grid-auto-flow: column;
@@ -175,13 +186,6 @@ export default {
 }
 
 .slider-component__item {
-  // width: 23.8%;
-  // margin-right: 1.56%;
-
-  // &:last-child {
-  //   margin-right: 0;
-  // }
-
   padding-right: 20px;
 }
 </style>

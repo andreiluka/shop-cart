@@ -37,6 +37,10 @@ export default {
    background: $light-gray-color;
    border-radius: 5px;
    padding: rem(26);
+   
+   @include phones {
+      padding: rem(20);
+   }
 }
 
 .installation-goods__label {
@@ -54,8 +58,8 @@ export default {
 }
 
 .installation-goods__checkbox-custom {
-   width: 20px;
-   height: 20px;
+   width: rem(20);
+   height: rem(20);
    background: #ffffff;
    border: 1px solid $gray-color;
    border-radius: 2px;
@@ -67,8 +71,8 @@ export default {
    &:after {
       content: '';
       display: block;
-      width: 16px;
-      height: 14px;
+      width: rem(16);
+      height: rem(14);
       background: url('../assets/img/check-mark.svg') center center no-repeat;
       position: absolute;
       top: 50%;
@@ -79,8 +83,8 @@ export default {
 }
 
 .installation-goods__icon {
-   width: 50px;
-   height: 50px;
+   width: rem(50);
+   height: rem(50);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -96,7 +100,7 @@ export default {
 }
 
 .installation-goods__text {
-   font-size: 14px;
+   font-size: rem(14);
    color: $gray-color;
 }
 </style>

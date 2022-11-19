@@ -37,7 +37,6 @@ export default {
 <style scoped lang="scss">
 .button-component__btn {
   width: 100%;
-  max-width: 370px;
   padding: 14px 40px;
   border: 1px solid $blue-color;
   border-radius: 4px;
