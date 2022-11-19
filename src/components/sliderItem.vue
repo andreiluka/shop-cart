@@ -99,7 +99,7 @@ export default {
 
 .slider-item__cost {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: rem(22);
   letter-spacing: 0.005em;
   margin-bottom: 5px;

@@ -184,7 +184,7 @@ export default {
 .carts-item__price {
    font-family: 'Roboto', Helvetica, Arial, sans-serif;
    font-style: normal;
-   font-weight: 500;
+   font-weight: 600;
    font-size: 12px;
    text-align: center;
    margin-top: 8px;
@@ -196,7 +196,7 @@ export default {
 
 .carts-item__cost {
    font-family: 'Roboto', Helvetica, Arial, sans-serif;
-   font-weight: 500;
+   font-weight: 600;
    font-size: rem(18);
 }
 
