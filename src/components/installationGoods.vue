@@ -44,6 +44,7 @@ export default {
    align-items: center;
    cursor: pointer;
 }
+
 .installation-goods__checkbox {
    display: none;
 }
@@ -76,6 +77,7 @@ export default {
       display: none;
    }
 }
+
 .installation-goods__icon {
    width: 50px;
    height: 50px;
@@ -87,10 +89,12 @@ export default {
    flex-shrink: 0;
    margin-right: rem(20);
 }
+
 .installation-goods__title {
    font-weight: 600;
    margin-bottom: 2px;
 }
+
 .installation-goods__text {
    font-size: 14px;
    color: $gray-color;

@@ -35,20 +35,24 @@ export default {
    align-items: center;
    font-size: 12px;
 }
+
 .mini-cart__icon {
    width: 28px;
    height: 25px;
    margin-right: 12px;
    background: url('../assets/img/cart.svg') center center / contain no-repeat;
 } 
+
 .mini-cart__title {
    font-size: 13px;
    font-weight: 600;
 }
+
 .mini-cart__amount {
    color: $gray-color;
    margin-bottom: 3px;
 }
+
 .mini-cart__cost {
    font-weight: 600;
 }

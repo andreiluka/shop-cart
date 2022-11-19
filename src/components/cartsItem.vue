@@ -2,7 +2,6 @@
    <div class="carts-item">
       <div class="carts-item__wrap">
          <div class="carts-item__pic">
-            <!-- <img src="../assets/img/BXC.png" alt="товар" class="carts-item__img"> -->
             <img :src="editProduct.image" alt="товар" class="carts-item__img">
          </div>
          <div class="carts-item__desc">
@@ -22,7 +21,6 @@
             </div>
             <div class="carts-item__price" :class="{'carts-item__price--hiden': editProduct.amount < 2}">{{editProduct.price.toLocaleString()}}&nbsp;&#8381;/шт.</div>
          </div>
-         <!-- <div class="carts-item__cost">{{editProduct.price * editProduct.amount}}&nbsp;&#8381;</div> -->
          <div class="carts-item__cost">{{itemCost}}&nbsp;&#8381;</div>
          <div @click="removeExistedGoods" class="carts-item__remove"></div>
       </div>
@@ -68,36 +66,44 @@ export default {
    padding: 29px 53px 25px 15px;
    position: relative;
 }
+
 .carts-item__pic {
    width: rem(100);
    height: rem(100);
    // margin-right: 31px;
    margin-right: 2.5%;
 }
+
 .carts-item__desc {
    flex: 1;
    margin-right: 2%;
 }
+
 .carts-item__name {
    font-weight: 600;
    margin-bottom: 10px;
 }
+
 .carts-item__text {
    font-size: 12px;
    margin-bottom: 10px;
 }
+
 .carts-item__code {
    font-size: 14px;
    color: $gray-color;
 }
+
 .carts-item__counter {
    // margin-right: rem(84);
    margin-right: 6.9%;
 }
+
 .carts-item__btns {
    display: flex;
    margin-bottom: 8px;
 }
+
 .carts-item__btn {
    display: flex;
    align-items: center;
@@ -115,6 +121,7 @@ export default {
       // opacity: 0.6;
    }
 }
+
 .carts-item__btn-icon {
    width: 10px;
    height: 2px;
@@ -133,6 +140,7 @@ export default {
       }
    }
 }
+
 .carts-item__amount {
    font-size: 14px;
    cursor: auto;
@@ -141,6 +149,7 @@ export default {
       background-color: $light-gray-color;
    }
 }
+
 .carts-item__price {
    font-family: 'Roboto', Helvetica, Arial, sans-serif;
    font-style: normal;
@@ -152,11 +161,13 @@ export default {
       opacity: 0;
    }
 }
+
 .carts-item__cost {
    font-family: 'Roboto', Helvetica, Arial, sans-serif;
    font-weight: 500;
    font-size: 18px;
 }
+
 .carts-item__remove {
    width: 15px;
    height: 2px;

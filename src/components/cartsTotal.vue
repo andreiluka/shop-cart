@@ -81,39 +81,45 @@ export default {
   background: $light-gray-color;
   border-radius: 5px;
 }
+
 .carts-total__title {
   font-weight: 600;
   font-size: 24px;
   margin-bottom: rem(31);
 }
+
 .carts-total__desc {
   margin-bottom: rem(16);
   padding-bottom: rem(11);
   border-bottom: 1px solid $gray-color;
 }
+
 .carts-total__row {
   display: flex;
   justify-content: space-between;
   margin-bottom: rem(18);
 }
+
 .carts-total__text {
   font-weight: 500;
 }
+
 .carts-total__val {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
+
 .carts-total__result-text {
   font-size: 18px;
   font-weight: 600;
-  // flex: 1;
-  // margin-right: 38%;
 }
+
 .carts-total__result-val {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 26px;
   font-weight: 700;
 }
+
 .carts-total__btn {
   margin-bottom: 12px;
 

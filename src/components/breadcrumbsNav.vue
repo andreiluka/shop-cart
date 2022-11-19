@@ -7,17 +7,6 @@
             :key="item"
          >{{item}}</li>
       </ul>
-      <!-- <ul v-if="Array.isArray(pathTitle)" class="breadcrumbs__list">
-         <li class="breadcrumbs__item">Главная</li>
-         <li class="breadcrumbs__item"
-            v-for="item in pathTitle"
-            :key="item"
-         >{{item}}</li>
-      </ul>
-      <ul v-else class="breadcrumbs__list">
-         <li class="breadcrumbs__item">Главная</li>
-         <li class="breadcrumbs__item">{{pathTitle}}</li>
-      </ul> -->
    </div>
 </template>
 

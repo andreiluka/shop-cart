@@ -42,7 +42,6 @@ export default {
   border: 1px solid $blue-color;
   border-radius: 4px;
   font-weight: 600;
-  // font-size: 18px;
   color: $blue-color;
   transition: 0.4s;
 

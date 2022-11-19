@@ -42,11 +42,6 @@ export default {
    props: {
       goods: Array
    },
-   // data() {
-   //    return {
-   //       editGoods: [...this.goods]
-   //    }
-   // },
    computed: {
       ...mapGetters(['totalAmountGoods']),
       totalAmount() {
@@ -70,6 +65,7 @@ export default {
       flex-direction: column;
    }
 }
+
 .normal-cart__content {
    margin-right: 4.3%;
    width: 62.5%;
@@ -79,25 +75,30 @@ export default {
       width: auto;
    }
 }
+
 .normal-cart__header {
    display: flex;
    justify-content: space-between;
    align-items: baseline;
    margin-bottom: rem(31);
 }
+
 .normal-cart__title-block {
    display: flex;
    align-items: baseline;
 }
+
 .normal-cart__title {
    font-weight: 700;
    font-size: 44px;
    margin-right: rem(22);
 }
+
 .normal-cart__amount {
    font-size: 18px;
    color: $gray-color;
 }
+
 .normal-cart__clear {
    color: $gray-color;
    // text-align: right;
@@ -110,9 +111,11 @@ export default {
       border-bottom: 0px solid $gray-color;
    }
 }
+
 .normal-cart__list {
    margin-bottom: 6px;
 }
+
 .normal-cart__item {
    border-bottom: 1px solid #C4C4C4;
 
@@ -120,6 +123,7 @@ export default {
       border-bottom: none;
    }
 }
+
 .normal-cart__total {
    // min-width: rem(425);
    width: 33.2%;
