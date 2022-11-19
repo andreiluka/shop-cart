@@ -4,19 +4,16 @@
          <div class="normal-cart__header">
             <div class="normal-cart__title-block">
                <h2 class="normal-cart__title">Ваша корзина</h2>
-               <div class="normal-cart__amount">3 товара</div>
+               <div class="normal-cart__amount">{{totalAmount}} товара</div>
             </div>
-            <div class="normal-cart__clear">Очистить корзину</div>
+            <div @click="removeAllGoods" class="normal-cart__clear">Очистить корзину</div>
          </div>
          <ul class="normal-cart__list">
-            <li class="normal-cart__item">
-               <carts-item/>
-            </li>
-            <li class="normal-cart__item">
-               <carts-item/>
-            </li>
-            <li class="normal-cart__item">
-               <carts-item/>
+            <li class="normal-cart__item"
+               v-for="item in goods" 
+               :key="item.id"
+            >
+               <carts-item :product="item"/>
             </li>
          </ul>
          <div class="normal-cart__installation">
@@ -33,6 +30,7 @@
 import cartsItem from '@/components/cartsItem.vue'
 import installationGoods from '@/components/installationGoods.vue'
 import cartsTotal from '@/components/cartsTotal.vue'
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
    name: 'normalCart',
@@ -41,17 +39,45 @@ export default {
       installationGoods,
       cartsTotal
    },
-   props: {}
+   props: {
+      goods: Array
+   },
+   // data() {
+   //    return {
+   //       editGoods: [...this.goods]
+   //    }
+   // },
+   computed: {
+      ...mapGetters(['totalAmountGoods']),
+      totalAmount() {
+         return this.totalAmountGoods
+      }
+   },
+   methods: {
+      ...mapMutations(['CLEAR_CART']),
+      removeAllGoods() {
+         this.CLEAR_CART();
+      }
+   }
 }
 </script>
 
 <style scoped lang="scss">
 .normal-cart {
    display: flex;
+
+   @include laptop {
+      flex-direction: column;
+   }
 }
 .normal-cart__content {
    margin-right: 4.3%;
    width: 62.5%;
+
+   @include laptop {
+      margin: 0 0 rem(20);
+      width: auto;
+   }
 }
 .normal-cart__header {
    display: flex;
@@ -97,5 +123,11 @@ export default {
 .normal-cart__total {
    // min-width: rem(425);
    width: 33.2%;
+
+   @include laptop {
+      width: auto;
+      max-width: 580px;
+   }
+
 }
 </style>

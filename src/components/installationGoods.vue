@@ -2,11 +2,11 @@
    <div class="installation-goods">
       <div class="installation-goods__wrap">
          <label class="installation-goods__label">
-            <input class="installation-goods__checkbox" type="checkbox" name="installation" id="installationGoods">
+            <input @change="checkInstallation" type="checkbox" class="installation-goods__checkbox">
             <div class="installation-goods__checkbox-custom"></div>
          </label>
          <div class="installation-goods__icon">
-            <img src="../assets/tools.svg" alt="установка" class="installation-goods__img">
+            <img src="../assets/img/tools.svg" alt="установка" class="installation-goods__img">
          </div>
          <div class="installation-goods__desc">
             <div class="installation-goods__title">Установка</div>
@@ -17,9 +17,16 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
    name: 'installationGoods',
-   props: {}
+   methods: {
+      ...mapMutations(['CHANGE_INSTALLATION']),
+      checkInstallation(e) {
+         this.CHANGE_INSTALLATION(e.target.checked);
+      }
+   }
 }
 </script>
 
@@ -61,7 +68,7 @@ export default {
       display: block;
       width: 16px;
       height: 14px;
-      background: url('../assets/check-mark.svg') center center no-repeat;
+      background: url('../assets/img/check-mark.svg') center center no-repeat;
       position: absolute;
       top: 50%;
       left: 50%;

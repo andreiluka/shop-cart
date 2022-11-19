@@ -4,9 +4,10 @@
          <breadcrumbs-nav :pathTitle="['Корзина']"/>
       </div>
       <div class="page-cart__content">
-         <normal-cart/>
+         <normal-cart :goods="goods"/>
       </div>
       <slider-component/>
+      <pre>{{viewedGoods}}</pre>
    </div>
 </template>
 
@@ -14,6 +15,7 @@
 import breadcrumbsNav from '@/components/breadcrumbsNav.vue'
 import normalCart from '@/components/normalCart.vue'
 import sliderComponent from '@/components/sliderComponent.vue'
+import { mapActions, mapState } from "vuex";
 
 export default {
    name: 'pageCart',
@@ -22,7 +24,28 @@ export default {
       normalCart,
       sliderComponent
    },
-   props: {}
+   computed: {
+      ...mapState({
+         goods: state => state.goods,
+         viewedGoods: state => state.viewedGoods
+      }),
+   },
+   methods: {
+      ...mapActions(['fetchGoods']),
+      // makeArrayWithImg(data) {
+      //    return data.map(item => {
+      //       const requirePic = require(`../assets/img/${item.image}`);
+      //       item.image = requirePic;
+      //       return item;
+      //    });
+      // }
+   },
+   created() {
+      this.fetchGoods('goods');
+      this.fetchGoods('viewedGoods');
+      // const data = require('../assets/data/goods.json');
+      // this.qwer = this.makeArrayWithImg(data);
+   }
 }
 </script>
 

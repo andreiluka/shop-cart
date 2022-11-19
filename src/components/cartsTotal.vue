@@ -5,24 +5,24 @@
       <div class="carts-total__desc">
         <div class="carts-total__cost carts-total__row">
           <div class="carts-total__text">Сумма заказа</div>
-          <div class="carts-total__val">50 576&nbsp;&#8381;</div>
+          <div class="carts-total__val">{{totalCost.toLocaleString()}}&nbsp;&#8381;</div>
         </div>
         <div class="carts-total__amount carts-total__row">
           <div class="carts-total__text">Количество</div>
-          <div class="carts-total__val">4 шт</div>
+          <div class="carts-total__val">{{totalAmount}}&nbsp;шт</div>
         </div>
         <div class="carts-total__installation carts-total__row">
           <div class="carts-total__text">Установка</div>
-          <div class="carts-total__val">Нет</div>
+          <div class="carts-total__val">{{installationState}}</div>
         </div>
       </div>
       <div class="carts-total__result carts-total__row">
         <div class="carts-total__result-text">Стоимость товаров</div>
-        <div class="carts-total__result-val">50 576&nbsp;&#8381;</div>
+        <div class="carts-total__result-val">{{totalCost.toLocaleString()}}&nbsp;&#8381;</div>
       </div>
       <div class="carts-total__btns">
         <div class="carts-total__btn">
-          <button-component :fontSizeBtn="'18px'" :colorBtn="'blue'" :textBtn="'Оформить заказ'"/>
+          <button-component @click="onApprove" :fontSizeBtn="'18px'" :colorBtn="'blue'" :textBtn="'Оформить заказ'"/>
         </div>
         <div class="carts-total__btn">
           <button-component :fontSizeBtn="'18px'" :textBtn="'Купить в 1 клик'"/>
@@ -34,10 +34,44 @@
 
 <script>
 import buttonComponent from "@/components/buttonComponent.vue";
+import { mapGetters, mapState, mapActions } from 'vuex';
 
 export default {
   title: 'cartsTotal',
-  components: {buttonComponent}
+  components: {buttonComponent},
+  computed: {
+    ...mapState({
+      goods: state => state.goods,
+      installation: state => state.installation
+    }),
+    ...mapGetters(['totalCostGoods', 'totalAmountGoods']),
+    totalCost() {
+      return this.totalCostGoods
+    },
+    totalAmount() {
+      return this.totalAmountGoods
+    },
+    installationState() {
+      return this.installation ? 'Да' : 'Нет'
+    }
+  },
+  methods: {
+    ...mapActions(['sendOrder']),
+    async onApprove() {
+      if (!this.goods.length) {
+        alert('КОРЗИНА ПУСТА');
+        return
+      }
+      
+      const data = [...this.goods, {installation:this.installation}];
+
+      try {
+        await this.sendOrder(data);
+      } catch(error) {
+        throw new Error(`Ошибка: ${error}`)
+      }
+    }
+  }
 }
 </script>
 

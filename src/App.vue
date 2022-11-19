@@ -5,9 +5,6 @@
     <div class="header">
       <mini-cart/>
     </div>
-    <!-- <div class="breadcrumbs-block">
-      <breadcrumbs-nav :pathTitle="['Корзина']"/>
-    </div> -->
     <page-cart/>
   </div>
 </template>
@@ -16,7 +13,6 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import pageCart from '@/components/pageCart.vue'
 import miniCart from '@/components/miniCart.vue'
-// import breadcrumbsNav from '@/components/breadcrumbsNav.vue'
 
 export default {
   name: 'App',
@@ -24,7 +20,6 @@ export default {
     // HelloWorld,
     pageCart,
     miniCart,
-    // breadcrumbsNav
   }
 }
 </script>

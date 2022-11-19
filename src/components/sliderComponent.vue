@@ -79,7 +79,7 @@ export default {
     display: block;
     width: rem(12);
     height: rem(21);
-    background: url('../assets/arrow.svg') center center no-repeat;
+    background: url('../assets/img/arrow.svg') center center no-repeat;
     position: absolute;
     top: 50%;
     left: 50%;

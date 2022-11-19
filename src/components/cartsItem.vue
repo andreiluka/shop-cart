@@ -2,35 +2,62 @@
    <div class="carts-item">
       <div class="carts-item__wrap">
          <div class="carts-item__pic">
-            <img src="../assets/BXC.png" alt="товар" class="carts-item__img">
+            <!-- <img src="../assets/img/BXC.png" alt="товар" class="carts-item__img"> -->
+            <img :src="editProduct.image" alt="товар" class="carts-item__img">
          </div>
          <div class="carts-item__desc">
-            <div class="carts-item__name">Вытяжное устройство G2H</div>
-            <div class="carts-item__text">12-72/168 м3/ч / гидрорегулируемый расход / от датчика присутствия</div>
-            <div class="carts-item__code">Артикул: G2H1065</div>
+            <div class="carts-item__name">{{editProduct.name}}</div>
+            <div class="carts-item__text">{{editProduct.desc}}</div>
+            <div class="carts-item__code">Артикул: {{editProduct.code}}</div>
          </div>
          <div class="carts-item__counter">
             <div class="carts-item__btns">
-               <div class="carts-item__btn">
+               <div @click="changeAmountGoods(false)" class="carts-item__btn">
                   <div class="carts-item__btn-icon"></div>
                </div>
-               <div class="carts-item__btn carts-item__amount">2</div>
-               <div class="carts-item__btn">
+               <div class="carts-item__btn carts-item__amount">{{editProduct.amount}}</div>
+               <div @click="changeAmountGoods(true)" class="carts-item__btn">
                   <div class="carts-item__btn-icon carts-item__btn-icon--plus"></div>
                </div>
             </div>
-            <div class="carts-item__price">12 644&nbsp;&#8381;/шт.</div>
+            <div class="carts-item__price" :class="{'carts-item__price--hiden': editProduct.amount < 2}">{{editProduct.price.toLocaleString()}}&nbsp;&#8381;/шт.</div>
          </div>
-         <div class="carts-item__cost">25 288&nbsp;&#8381;</div>
-         <div class="carts-item__close"></div>
+         <!-- <div class="carts-item__cost">{{editProduct.price * editProduct.amount}}&nbsp;&#8381;</div> -->
+         <div class="carts-item__cost">{{itemCost}}&nbsp;&#8381;</div>
+         <div @click="removeExistedGoods" class="carts-item__remove"></div>
       </div>
    </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
    name: 'cartsItem',
-   props: {}
+   props: {
+      product: Object
+   },
+   data() {
+      return {
+         editProduct: {...this.product}
+      }
+   },
+   computed: {
+      itemCost() {
+         return (this.editProduct.price * this.editProduct.amount).toLocaleString()
+      }
+   },
+   methods: {
+      ...mapMutations(['EDIT_GOODS', 'REMOVE_GOODS']),
+      changeAmountGoods(action) {
+         action ? this.editProduct.amount += 1 : this.editProduct.amount -= 1;
+         if (this.editProduct.amount < 0) this.editProduct.amount = 0;
+         this.EDIT_GOODS(this.editProduct);
+      },
+      removeExistedGoods() {
+         this.REMOVE_GOODS(this.editProduct.id);
+      }
+   }
 }
 </script>
 
@@ -120,13 +147,17 @@ export default {
    font-weight: 500;
    font-size: 12px;
    text-align: center;
+
+   &--hiden {
+      opacity: 0;
+   }
 }
 .carts-item__cost {
    font-family: 'Roboto', Helvetica, Arial, sans-serif;
    font-weight: 500;
    font-size: 18px;
 }
-.carts-item__close {
+.carts-item__remove {
    width: 15px;
    height: 2px;
    transform: rotate(45deg);

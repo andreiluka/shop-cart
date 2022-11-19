@@ -2,7 +2,7 @@
   <div class="slider-item"> 
     <div class="slider-item__wrap">
       <div class="slider-item__pic">
-        <img src="../assets/TDA.png" alt="товар" class="slider-item__img">
+        <img src="../assets/img/TDA.png" alt="товар" class="slider-item__img">
       </div>
       <div class="slider-item__desc">
         <div class="slider-item__name">G2H</div>

@@ -4,18 +4,26 @@
          <div class="mini-cart__icon"></div>
          <div class="mini-cart__desc">
             <div class="mini-cart__title">Ваша корзина</div>
-            <div class="mini-cart__amount">3 товара</div>
-            <div class="mini-cart__cost">50 576 &#8381;</div>
+            <div class="mini-cart__amount">{{goods.length}}&nbsp;товара</div>
+            <div class="mini-cart__cost">{{totalCost.toLocaleString()}}&nbsp;&#8381;</div>
          </div>
       </div>
    </div>
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex';
+
 export default {
    name: 'miniCart',
-   props: {
-      // msg: String
+   computed: {
+      ...mapState({
+         goods: state => state.goods
+      }),
+      ...mapGetters(['totalCostGoods', 'totalAmountGoods']),
+      totalCost() {
+         return this.totalCostGoods
+      }
    }
 }
 </script>
@@ -31,7 +39,7 @@ export default {
    width: 28px;
    height: 25px;
    margin-right: 12px;
-   background: url('../assets/cart.svg') center center / contain no-repeat;
+   background: url('../assets/img/cart.svg') center center / contain no-repeat;
 } 
 .mini-cart__title {
    font-size: 13px;
